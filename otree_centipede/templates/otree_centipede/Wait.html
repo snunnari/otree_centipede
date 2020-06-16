@@ -1,0 +1,49 @@
+{% extends 'otree/WaitPage.html' %}
+{% load otree static %}
+
+{% block title %}
+    Your Move
+{% endblock %}
+
+{% block content %}
+
+{% if group.round_number > 1 %}
+<div class="card my-5">
+    <div class="card-header">Your opponent decided to pass</div>
+</div>
+{% endif %}
+
+<div class="card my-5">
+    <div class="card-body">
+
+        {% if group.round_number > 1 %}
+<!--        <h5 class="card-title" style="text-align:center;">Your opponent decided to pass.</h5>-->
+        {% endif %}
+
+        <!-- Piles -->
+        <p class="card-text">The Large Pile is now: {{ player.large_pile }}</p>
+        <p class="card-text">The Small Pile is now: {{ player.small_pile }}</p>
+
+        <br>
+
+        <!-- Decision -->
+        <p>Do you want to take the Large Pile?</p>
+
+        <!--Buttons-->
+        <div class="btn-div">
+        <label id="take-label" class="btn btn-outline-secondary">
+            <input id="take" type="radio" name="take" value="True" style="display: none;" required>Take
+        </label>
+        <label id="pass-label" class="btn btn-outline-secondary">
+            <input id="pass" type="radio" name="take" value="False" style="display: none;" required>Pass
+        </label>
+        </div>
+  </div>
+</div>
+
+
+
+
+{% next_button %}
+
+{% endblock %}

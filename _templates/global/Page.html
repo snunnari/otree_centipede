@@ -1,0 +1,35 @@
+{% extends "otree/Page.html" %}
+{% load otree static %}
+
+{% block global_styles  %}
+<link href="{% static 'global\style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block global_scripts  %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!--Make "Take" and "Pass" buttons mutually exclusive-->
+<script>
+$('#take-label').click(function(){
+    $(this).addClass('active');
+
+    if($('#pass-label').hasClass('active')){
+        $('#pass-label').removeClass('active')
+    } else {
+        $(this).addClass('active')
+    }
+});
+
+$('#pass-label').click(function(){
+    $(this).addClass('active');
+
+    if($('#take-label').hasClass('active')){
+        $('#take-label').removeClass('active')
+    } else {
+        $(this).addClass('active')
+    }
+});
+</script>
+{% endblock %}

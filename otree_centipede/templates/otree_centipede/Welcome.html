@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block content %}
+
+<p>
+    This is an experiment in group decision making, and you will be paid for your participation in cash,
+    at the end of the experiment. Different subjects may earn different amounts.
+    What you earn depends partly on your decisions, partly on the decisions of others, and partly on chance.
+</p>
+<p>
+    The entire experiment will take place through computer terminals,
+    and all interaction between you will take place through the computers.
+    It is important that you not talk or in any way try to communicate with other subjects during the experiments.
+    If you disobey the rules, we will have to ask you to leave the experiment.
+</p>
+
+<p>
+    We will start with a brief instruction period.
+    During the instruction period, you will be given a complete description of the experiment.
+<!--    During the instruction period, you will be given a complete description of the experiment and-->
+<!--    will be shown how to use the computers.-->
+<!--    You must take a quiz after the instruction period.-->
+<!--    So it is important that you listen carefully.-->
+
+    {% if Constants.lab %}
+    If you have any questions during the instruction period,
+    raise your hand and your question will be answered so everyone can hear.
+    {% endif %}
+
+    {% if Constants.lab %}
+    If any difficulties arise after the experiment has begun, raise your hand, and an experimenter will come and assist you.
+    {% endif %}
+</p>
+
+<p>
+    You and the other participants will be divided into two groups. Each group will contain half of the total number of participants.
+    <!--    The subjects will be divided into two groups, containing 10 subjects each.-->
+    The groups will be labeled the RED group and the BLUE group.
+    <!--To determine which color you are, will you each please select an envelope as the experimenter passes by you.-->
+    <!--Added-->
+    Your group/color will be randomly determined at the beginning of the experiment.
+    Mind that you will be either RED or BLUE for the entire experiment.
+</p>
+
+<p>
+<!--    If you chose BLUE, you will be BLUE for the entire experiment.-->
+<!--    If you chose RED, you will be RED for the entire experiment.-->
+<!--    Please remember your color, because the instructions are slightly different for the BLUE and the RED subjects.-->
+</p>
+
+    {% next_button %}
+
+{% endblock %}

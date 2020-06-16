@@ -1,0 +1,167 @@
+/* *********************************** */
+/* ************ Containers *********** */
+/* *********************************** */
+
+.otree-body.container {
+    max-width:970px;
+    margin: 20px auto 20px;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.container {
+  max-width: 768px;
+}
+
+.page-header {
+    margin: 40px 0 40px;
+    padding: 0;
+    border-bottom: none;
+    text-align:center;
+}
+
+/* .wrapper, .alert {
+    min-width: 800px;
+    max-width: 900px;
+    margin: 40px auto 20px;
+    font-size: 1.2rem;
+} */
+
+/*
+.card-deck{
+    justify-content: space-around;
+}
+*/
+
+.card-header {
+    height:3rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*
+.card {
+    max-width: 28rem;
+    margin: auto;
+}
+*/
+
+.player-screen {
+    background-color: ivory;
+    border: 1px solid rgba(0,0,0,.07);
+}
+
+.card-screen {
+    max-width: 98%;
+    margin:auto;
+}
+
+/* ***************************** */
+/* ************ Tags *********** */
+/* ***************************** */
+
+h1, h2, h3, h4 {
+    text-align: center !important;
+    padding: 1rem;
+}
+
+h5 {
+    text-align: center;
+    padding: 0.5em;
+}
+
+p {
+    text-align: justify;
+    padding: 0.25rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+/* ************************************** */
+/* ************ Buttons/Forms *********** */
+/* ************************************** */
+
+.otree-btn-next {
+    margin: 2.5rem auto;
+    display: inherit;
+}
+
+input[type=number].form-control {
+    max-width: 100px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.form-check-input, label {
+    position: relative;
+    margin-top: 0rem;
+    margin-left: 0rem;
+    margin-bottom: 0rem;
+}
+
+.btn-div {
+    text-align: center;
+    max-width: 25%;
+    margin: auto;
+    /* background-color: rgba(0,0,0,.03); */
+    /* border: 1px solid rgba(0,0,0,.125); */
+}
+
+
+/* ************************************* */
+/* ************ Instructions *********** */
+/* ************************************* */
+
+.instructions {
+	max-width: 800px;
+	height: 100%;
+	font-size: inherit;
+	background: rgba(255,255,245,0.25);
+	margin: 40px auto;
+    padding: 20px 20px 10px 20px;
+
+    position:relative;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.05) inset;
+       -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.05) inset;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.05) inset;
+
+    -moz-border-radius: 5px;
+         border-radius: 5px;
+}
+
+
+/* ************************************* */
+/* ************ Tables/Lists *********** */
+/* ************************************* */
+
+table {
+    margin: auto;
+    width: 80%;
+}
+
+.table td, .table th {
+    text-align: center;
+    padding: 0.5rem;
+    margin: 0.10rem;
+}
+
+.table thead th {
+    border-bottom: 0px solid #dee2e6;
+}
+
+ul {
+    margin-top: 1.5em;
+}
+
+li {
+  padding-bottom: 0.25em;
+}
+
+/* ************************************* */
+/* ************ Progress Bar *********** */
+/* ************************************* */
+
+.progress-bar {
+    width: 100%;
+}

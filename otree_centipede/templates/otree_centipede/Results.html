@@ -1,0 +1,49 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+{% if not group.game_on %}
+    {% if player.take %}
+        <div class="card my-5"><div class="card-header">You decided to take the large pile</div></div>
+        <div class="card my-3">
+        <div class="card-body">
+<!--        <p>You decided to take the large pile.</p>-->
+            <p>Your payoff is: {{ player.large_pile }}</p>
+            <p>Your opponent's payoff is: {{ player.small_pile }}</p>
+        </div>
+        </div>
+    {% else %}
+        <div class="card my-5"><div class="card-header">Your opponent decided to take the large pile</div></div>
+        <div class="card my-3">
+        <div class="card-body">
+<!--        <p>Your opponent decided to take the large pile.</p>-->
+            <p>Your payoff is: {{ player.small_pile }}</p>
+            <p>Your opponent's payoff is: {{ player.large_pile }}</p>
+        </div>
+        </div>
+    {% endif %}
+
+{% else %}
+    <div class="card my-5"><div class="card-header">Both your opponent and you decided to pass in all rounds</div></div>
+<!--    <p>Both the other player and you decided to pass in all rounds.</p>-->
+    <div class="card my-3">
+    <div class="card-body">
+    {% if player.id_in_group == 1 %}
+        <p>Since you are RED player, your payoff is: {{ player.large_pile_pass }}</p>
+        <p>Your opponent's payoff is: {{ player.small_pile_pass }}</p>
+    {% else %}
+        <p>Since you are BLUE player, your payoff is: {{ player.small_pile_pass }}</p>
+        <p>Your opponent's payoff is: {{ player.large_pile_pass }}</p>
+    {% endif %}
+    </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+
+
