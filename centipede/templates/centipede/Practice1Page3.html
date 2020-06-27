@@ -1,0 +1,141 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Practice Game 1 - Page 3 of 4
+{% endblock %}
+
+{% block content %}
+
+<!-- Player's color info for practice -->
+<div class="card my-5 card-screen">
+    {% if player.id_in_group == 1 %}
+    <div class="card-header">For the practice game, you are RED player</div>
+    {% else %}
+    <div class="card-header">For the practice game, you are BLUE player</div>
+    {% endif %}
+</div>
+
+<p>
+<!--    Since RED chose PASS, this is recorded on the top part of the screen with a PASS in the first RED column,-->
+<!--    and the cursor has moved on to the second column, which is BLUE, indicating that it is BLUE's move.-->
+<!--    On the bottom part of the screen, the BLUE players are now told that it is their turn to choose,-->
+<!--    and are told the choices they can make.-->
+<!--    The RED players are told that it is their opponent's turn to choose, and are told the choices that their opponent can make.-->
+    <!-- Added -->
+    Any decision taken will be recorded and notified in a box on the top part of the screen.
+    Since RED chose PASS, this is notified to BLUE as "Your opponent decided to pass".
+    Notice also that there is now a Large Pile of {{ large_pile_practice_second }}
+    and a Small Pile of {{ small_pile_practice_second }}.
+</p>
+
+<br>
+<!-- BLUE player's screen -->
+<div class="player-screen">
+<h5>BLUE player's screen</h5>
+        <h4>Your Move</h4>
+
+<div class="card my-3 card-screen">
+    <div class="card-header">Your opponent decided to pass</div>
+</div>
+
+<div class="card my-5 card-screen">
+    <div class="card-body">
+
+        <!-- Piles -->
+        <p class="card-text">The Large Pile is now: {{ large_pile_practice_second }}</p>
+        <p class="card-text">The Small Pile is now: {{ small_pile_practice_second }}</p>
+
+        <br>
+
+        <!-- Decision -->
+        <p>Do you want to take the Large Pile?</p>
+
+        {% if player.id_in_group == 2 %}
+        <!--Buttons-->
+        <div class="btn-div">
+        <label id="take-label" class="btn btn-outline-secondary">
+            <input id="take-practice-on" type="radio" name="take_practice" value="True" style="display: none;" required onclick="buttonShow()">Take
+        </label>
+        <label id="pass-label" class="btn btn-outline-secondary">
+            <input id="pass-practice" type="radio" name="take_practice" value="False" style="display: none;" required onclick="buttonError()">Pass
+        </label>
+        </div>
+        {% else %}
+                <div class="btn-div">
+        <label id="take-label-off" class="btn btn-outline-secondary">
+            <input id="take-off" type="radio" name="take_practice" value="True" style="display: none;">Take
+        </label>
+        <label id="pass-label-off" class="btn btn-outline-secondary">
+            <input id="pass-off" type="radio" name="take_practice" value="False" style="display: none;">Pass
+        </label>
+        </div>
+        {% endif %}
+  </div>
+</div>
+</div>
+
+<br>
+
+<p>As before, in this turn RED players will see the waiting page.</p>
+
+<p>
+    {% if Constants.lab %}
+    Now it is BLUE player's turn to move.
+    Will all the BLUE players now please choose TAKE and then NEXT.
+    RED players, please select NEXT.
+    {% endif %}
+</p>
+
+    <button class="btn btn-primary btn-large btn-primary next-button otree-btn-next" type="submit" value="Next">Next</button>
+
+{% endblock %}
+
+
+{% block scripts %}
+{% if player.id_in_group == 2 %}
+<!--
+<script>
+function errorMessage() {
+  document.getElementById("error-radio").innerHTML = "Please, select PASS.";
+}
+</script>
+-->
+<!-- Button NEXT appears if PASS is selected -->
+<script type="text/javascript">
+var showButton = document.getElementsByClassName("btn btn-primary btn-large btn-primary next-button otree-btn-next")[0];
+var passButton = document.getElementById('pass-practice');
+var takeButton = document.getElementById('take-practice-on');
+var newElement = document.createElement("p");
+
+showButton.parentNode.replaceChild(newElement, showButton);
+
+nextButton = setInterval(function() {
+        if(takeButton.checked) {
+            newElement.parentNode.replaceChild(showButton, newElement);
+            clearInterval(nextButton);
+        } else {
+            newElement.innerHTML = "<div class='error-message'>You are the BLUE player. Please, select TAKE to make the NEXT button appear.</div>";
+        }
+    }, 1);
+</script>
+
+<!-- If PASS is selected, button NEXT is removed. -->
+<script>
+function buttonError() {
+        if(passButton.checked) {
+            showButton.style.display = "none";
+        }
+    };
+</script>
+
+<!-- If TAKE is selected, button NEXT reappears. -->
+<script>
+function buttonShow() {
+        if(takeButton.checked) {
+            showButton.style.display = "block";
+        }
+    };
+</script>
+{% endif %}
+{% endblock %}

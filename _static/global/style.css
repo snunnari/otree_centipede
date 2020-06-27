@@ -37,6 +37,7 @@
     height:3rem;
     text-align: center;
     font-weight: bold;
+    border-bottom: 0px solid rgba(0,0,0,.125);
 }
 
 /*
@@ -55,6 +56,13 @@
     max-width: 98%;
     margin:auto;
 }
+
+.error-message {
+    padding: 0.5em;
+    text-align: center;
+    color: darkorange;
+}
+
 
 /* ***************************** */
 /* ************ Tags *********** */
@@ -84,6 +92,7 @@ p {
 
 .otree-btn-next {
     margin: 2.5rem auto;
+    margin-bottom: 0.25rem;
     display: inherit;
 }
 
@@ -151,7 +160,7 @@ table {
 }
 
 ul {
-    margin-top: 1.5em;
+    margin-top: 0.5em;
 }
 
 li {

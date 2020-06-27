@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Round {{ page }}
+    Game {{ game }} - Node {{ game_node }}
 {% endblock %}
 
 {% block content %}
@@ -28,8 +28,8 @@
     <div class="card-body">
 
         <!-- Piles -->
-        <p class="card-text">The Large Pile is now: {{ player.large_pile }}</p>
-        <p class="card-text">The Small Pile is now: {{ player.small_pile }}</p>
+        <p class="card-text">The Large Pile is now: {{ large_pile }}</p>
+        <p class="card-text">The Small Pile is now: {{ small_pile }}</p>
 
         <br>
 
@@ -49,6 +49,28 @@
 </div>
 
 
-{% next_button %}
+<button class="btn btn-primary btn-large btn-primary next-button otree-btn-next" type="submit" value="Next">Next</button>
 
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+var showButton = document.getElementsByClassName("btn btn-primary btn-large btn-primary next-button otree-btn-next")[0];
+var newElement = document.createElement("p");
+var radioTake = document.getElementById("take");
+var radioPass = document.getElementById("pass");
+var counter = 3
+
+showButton.parentNode.replaceChild(newElement, showButton);
+
+nextButton = setInterval(function() {
+        if(radioTake.checked || radioPass.checked) {
+            newElement.parentNode.replaceChild(showButton, newElement);
+            clearInterval(nextButton);
+        } else {
+            newElement.innerHTML = "<div class='error-message'>Please, select either TAKE or PASS to make the NEXT button appear.</div>";
+        }
+    }, 1);
+</script>
 {% endblock %}

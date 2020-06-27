@@ -11,10 +11,10 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     dict(
-        name='otree_centipede',
+        name='centipede',
         display_name="Centipede Game",
-        num_demo_participants=6,
-        app_sequence=['otree_centipede'],
+        num_demo_participants=4,
+        app_sequence=['centipede'],
         use_browser_bots=False
     ),
 ]

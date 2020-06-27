@@ -1,0 +1,175 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Practice Game 1 - Page 2 of 4
+{% endblock %}
+
+{% block content %}
+
+<!-- Player's color info for practice -->
+<div class="card my-5 card-screen">
+    {% if player.id_in_group == 1 %}
+    <div class="card-header">For the practice game, you are RED player</div>
+    {% else %}
+    <div class="card-header">For the practice game, you are BLUE player</div>
+    {% endif %}
+</div>
+
+<p>
+    The screen below displays the situation at round 1 for the RED player.
+<!--   You now see on the top part of the screen that the first game has begun, and you are told who you are matched against.-->
+    The RED player is told that it is his/her move, and is given a description of the choices available (TAKE/PASS)
+    as well as the amount contained in each pile.
+</p>
+<p>
+    The Large Pile is {{ Constants.large_pile }} and the Small Pile is {{ Constants.small_pile }}.
+    If the RED player decides to TAKE, his/her payoff will be {{ Constants.large_pile }} and his/her opponent's payoff will be
+    {{ Constants.small_pile }}. If the RED player decides to PASS, both the Large Pile and the Small Pile will be doubled,
+    and it will be BLUE player's turn to move.
+</p>
+
+<!-- RED player's screen -->
+<br>
+<div class="player-screen">
+<h5>RED player's screen</h5>
+
+    <h4>Your Move</h4>
+
+<!-- Player's color info -->
+<div class="card my-5 card-screen">
+    <div class="card-header">You are RED player</div>
+</div>
+
+<div class="card my-3 card-screen">
+    <div class="card-body">
+
+        <!-- Piles -->
+        <p class="card-text">The Large Pile is now: {{ Constants.large_pile }}</p>
+        <p class="card-text">The Small Pile is now: {{ Constants.small_pile }}</p>
+
+        <br>
+
+        <!-- Decision -->
+        <p>Do you want to take the Large Pile?</p>
+
+        {% if player.id_in_group == 1 %}
+        <!--Buttons-->
+        <div class="btn-div">
+        <label id="take-label" class="btn btn-outline-secondary">
+            <input id="take-practice" type="radio" name="take_practice" value="True" style="display: none;" required onclick="buttonError()">Take
+        </label>
+        <label id="pass-label" class="btn btn-outline-secondary">
+            <input id="pass-practice-on" type="radio" name="take_practice" value="False" style="display: none;" required onclick="buttonShow()">Pass
+        </label>
+            <br>
+            <div class="error-message">
+                <font color="Red" id="error-radio"></font>
+            </div>
+        </div>
+        {% else %}
+        <div class="btn-div">
+        <label id="take-label-off" class="btn btn-outline-secondary">
+            <input id="take-off" type="radio" name="take_practice" value="True" style="display: none;">Take
+        </label>
+        <label id="pass-label-off" class="btn btn-outline-secondary">
+            <input id="pass-off" type="radio" name="take_practice" value="False" style="display: none;">Pass
+        </label>
+        </div>
+        {% endif %}
+  </div>
+</div>
+</div>
+
+<br>
+
+<p>
+<!--    If you are a BLUE player, you are told that it is your opponent's move, and are told the choices available to your opponent.-->
+    At round 1, BLUE players will see a waiting page, as below.
+    The BLUE player is told that it is his/her opponent's move.
+    Once the opponent has taken his/her decision, it will be BLUE player's turn to move.
+</p>
+
+<!-- BLUE player's screen -->
+<br>
+<div class="player-screen">
+<h5>BLUE player's screen</h5>
+
+<div class="otree-wait-page container">
+    <div class="card">
+        <h5 class="otree-wait-page__title card-header" style="text-align:left;">
+            Please wait
+        </h5>
+        <div class="card-body">
+            <p class="otree-wait-page__body" style="font-size:1rem;">Waiting for the other participant.</p>
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</div>
+
+<br>
+<p>
+    {% if Constants.lab %}
+<!--    Will all the RED players now choose PASS by typing in P on your terminals now.-->
+    Will all the RED players now choose PASS by selecting the proper button. Then, select NEXT.<br>
+    BLUE players, please select NEXT.
+    {% endif %}
+</p>
+
+<button class="btn btn-primary btn-large btn-primary next-button otree-btn-next" type="submit" value="Next">Next</button>
+
+{% endblock %}
+
+
+{% block scripts %}
+{% if player.id_in_group == 1 %}
+<!--
+<script>
+function errorMessage() {
+  document.getElementById("error-radio").innerHTML = "Please, select PASS.";
+}
+</script>
+-->
+<!-- Button NEXT appears if PASS is selected -->
+<script type="text/javascript">
+var showButton = document.getElementsByClassName("btn btn-primary btn-large btn-primary next-button otree-btn-next")[0];
+var passButton = document.getElementById('pass-practice-on');
+var takeButton = document.getElementById('take-practice');
+var newElement = document.createElement("p");
+
+showButton.parentNode.replaceChild(newElement, showButton);
+
+nextButton = setInterval(function() {
+        if(passButton.checked) {
+            newElement.parentNode.replaceChild(showButton, newElement);
+            clearInterval(nextButton);
+        } else {
+            newElement.innerHTML = "<div class='error-message'>You are the RED player. Please, select PASS to make the NEXT button appear.</div>";
+        }
+    }, 1);
+</script>
+
+<!-- If TAKE is selected, button NEXT is removed. -->
+<script>
+function buttonError() {
+        if(takeButton.checked) {
+            showButton.style.display = "none";
+        }
+    };
+</script>
+
+<!-- If PASS is selected, button NEXT reappears. -->
+<script>
+function buttonShow() {
+        if(passButton.checked) {
+            showButton.style.display = "block";
+        }
+    };
+</script>
+{% endif %}
+{% endblock %}

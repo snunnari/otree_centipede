@@ -32,7 +32,7 @@
     If the player passes, both piles double again and it is the other player's turn.
 </p>
 <p>
-    The last move of the game is move {{ Constants.num_rounds }}, and is BLUE's move (if the game even gets this far).
+    The last move of the game is move {{ Constants.num_nodes }}, and is BLUE's move (if the game even gets this far).
     The Large Pile now contains {{ large_pile_practice_last }} and the Small Pile contains {{ small_pile_practice_last }}.
     If BLUE takes, BLUE gets the Large Pile of {{ large_pile_practice_last }} and RED gets the Small Pile of {{ small_pile_practice_last }}.
     If BLUE passes, then the piles double again.
@@ -48,7 +48,7 @@
     <table>
         <thead>
             <tr>
-                <th colspan="{{ Constants.num_rounds }}" style="text-align:center;">
+                <th colspan="{{ Constants.num_nodes }}" style="text-align:center;">
                     Moves
                 </th>
                 <th>
@@ -107,6 +107,7 @@
 
 </p>
 
-    {% next_button %}
+    <!-- Start practice round button -->
+    <input class="btn btn-primary btn-large btn-primary next-button otree-btn-next" type="submit" value="Start practice game"/>
 
 {% endblock %}

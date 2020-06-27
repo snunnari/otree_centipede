@@ -24,11 +24,18 @@ Then hit ENTER.
 -->
 
 <p>
-    You now see the experiment screen. The box in the top part of the screen tells your color.
-    So, RED players will read "You are RED player" and BLUE players will read "You are BLUE player".
+    You now see the experiment screen. The screen above will be displayed when it is your turn to move.
 </p>
 <p>
-    Please, remember your color, as in the practice round you will perform actions based on your color.
+    The box in the top part of the screen tells your color.
+    Your color has already been set and will not change for the duration of the experiment.
+    If you are a RED player, in the box below you will read "You are RED player".
+    If you are a BLUE player, you will read "You are BLUE player".
+</p>
+<p>
+    For the practice game, your color will be visible on all pages, in a box similar to that displayed in the screen below.
+    This is because in the practice game you will perform specific actions based on your color.
+    Mind that during the actual experiment you will see your color only when it is your turn to move.
 </p>
 
 <p>
@@ -56,12 +63,12 @@ Then hit ENTER.
 </div>
 
 <!-- Decision screen practice (buttons switched off) -->
-<div class="card my-5">
+<div class="card my-5 card-screen">
     <div class="card-body">
 
         <!-- Piles -->
-        <p class="card-text">The Large Pile is now: {{ large_pile_practice }}</p>
-        <p class="card-text">The Small Pile is now: {{ small_pile_practice }}</p>
+        <p class="card-text">The Large Pile is now: {{ Constants.large_pile }}</p>
+        <p class="card-text">The Small Pile is now: {{ Constants.small_pile }}</p>
 
         <br>
 
@@ -80,9 +87,18 @@ Then hit ENTER.
   </div>
 </div>
 </div>
+
+<br>
+
+
 <p>
-    Throughout the experiment, you will be shown the amount of the Large Pile and of the Small Pile.
-    When it is your turn to move, you will be asked to decide whether to TAKE the Large Pile or to PASS.
+    When it is your turn to move, you will be shown the amount of the Large Pile and of the Small Pile.
+    For example, at round 1 the Large Pile is {{ Constants.large_pile }} and the Small Pile is {{ Constants.small_pile }}.
+    You will be asked to decide whether to TAKE the Large Pile or to PASS.
+    Mind that you do not have to press anything now, this is just for illustrative purposes.
+    Still, you can practice with these buttons to see how they work.
+</p>
+<p>
 <!--    Throughout the experiment, the bottom of the screen will tell you what is currently happening,-->
 <!--    and the top will tell you the history of what happened in the previous games.-->
 <!--    Since the experiment has not begun yet, the top part of the screen is currently empty.-->
@@ -94,7 +110,7 @@ Then hit ENTER.
 </p>
 <p>
     We will now start the first practice game.
-    Remember, do not hit any keys until you are told to do so.
+    From this point forward, do not hit any keys until you are told to do so.
     Please, select NEXT.
 </p>
 

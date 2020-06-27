@@ -1,0 +1,132 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Practice Game 2 - Page 2 of 3
+{% endblock %}
+
+{% block content %}
+
+<!-- Player's color info for practice -->
+<div class="card my-5 card-screen">
+    {% if player.id_in_group == 1 %}
+    <div class="card-header">For the practice game, you are RED player</div>
+    {% else %}
+    <div class="card-header">For the practice game, you are BLUE player</div>
+    {% endif %}
+</div>
+
+<p>It is now BLUE player's turn</p>
+<p>More important, this is the last turn of the game.</p>
+
+<br>
+<!-- BLUE player's screen -->
+<div class="player-screen">
+<h5>BLUE player's screen</h5>
+        <h4>Your Move</h4>
+
+<div class="card my-3 card-screen">
+    <div class="card-header">Your opponent decided to pass</div>
+</div>
+
+<div class="card my-5 card-screen">
+    <div class="card-body">
+
+        <!-- Piles -->
+        <p class="card-text">The Large Pile is now: {{ large_pile_practice_last }}</p>
+        <p class="card-text">The Small Pile is now: {{ small_pile_practice_last }}</p>
+
+        <br>
+
+        <!-- Decision -->
+        <p>Do you want to take the Large Pile?</p>
+
+        {% if player.id_in_group == 2 %}
+        <!--Buttons-->
+        <div class="btn-div">
+        <label id="take-label" class="btn btn-outline-secondary">
+            <input id="take-practice" type="radio" name="take_practice" value="True" style="display: none;" required onclick="buttonError()">Take
+        </label>
+        <label id="pass-label" class="btn btn-outline-secondary">
+            <input id="pass-practice-on" type="radio" name="take_practice" value="False" style="display: none;" required onclick="buttonShow()">Pass
+        </label>
+        </div>
+        {% else %}
+                <div class="btn-div">
+        <label id="take-label-off" class="btn btn-outline-secondary">
+            <input id="take-off" type="radio" name="take_practice" value="True" style="display: none;">Take
+        </label>
+        <label id="pass-label-off" class="btn btn-outline-secondary">
+            <input id="pass-off" type="radio" name="take_practice" value="False" style="display: none;">Pass
+        </label>
+        </div>
+        {% endif %}
+  </div>
+</div>
+</div>
+
+<br>
+
+<p>
+    As you can see, the two piles doubled again.
+</p>
+<p>
+    If the BLUE player selected TAKE, he/she would earn {{ large_pile_practice_last }},
+    and the RED player would earn {{ small_pile_practice_last }}
+</p>
+<p>
+    Will all BLUE players select PASS and then NEXT. RED players, please select NEXT.
+</p>
+
+<button class="btn btn-primary btn-large btn-primary next-button otree-btn-next" type="submit" value="Next">Next</button>
+
+{% endblock %}
+
+
+{% block scripts %}
+{% if player.id_in_group == 2 %}
+<!--
+<script>
+function errorMessage() {
+  document.getElementById("error-radio").innerHTML = "Please, select PASS.";
+}
+</script>
+-->
+<!-- Button NEXT appears if PASS is selected -->
+<script type="text/javascript">
+var showButton = document.getElementsByClassName("btn btn-primary btn-large btn-primary next-button otree-btn-next")[0];
+var passButton = document.getElementById('pass-practice-on');
+var takeButton = document.getElementById('take-practice');
+var newElement = document.createElement("p");
+
+showButton.parentNode.replaceChild(newElement, showButton);
+
+nextButton = setInterval(function() {
+        if(passButton.checked) {
+            newElement.parentNode.replaceChild(showButton, newElement);
+            clearInterval(nextButton);
+        } else {
+            newElement.innerHTML = "<div class='error-message'>You are the BLUE player. Please, select PASS to make the NEXT button appear.</div>";
+        }
+    }, 1);
+</script>
+
+<!-- If TAKE is selected, button NEXT is removed. -->
+<script>
+function buttonError() {
+        if(takeButton.checked) {
+            showButton.style.display = "none";
+        }
+    };
+</script>
+
+<!-- If PASS is selected, button NEXT reappears. -->
+<script>
+function buttonShow() {
+        if(passButton.checked) {
+            showButton.style.display = "block";
+        }
+    };
+</script>
+{% endif %}
+{% endblock %}
