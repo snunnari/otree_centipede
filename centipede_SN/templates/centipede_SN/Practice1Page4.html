@@ -1,0 +1,91 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Practice Game 1 - Page 4 of 4
+{% endblock %}
+
+{% block content %}
+
+<!-- Player's color info for practice -->
+<div class="card my-5 card-screen">
+    {% if player.id_in_group == 1 %}
+    <div class="card-header">For the practice game, you are RED player</div>
+    {% else %}
+    <div class="card-header">For the practice game, you are BLUE player</div>
+    {% endif %}
+</div>
+
+<p>
+    Since BLUE chose TAKE, the first game has ended.
+    Again, you are notified about the decision taken in the previous round.
+    Specifically, you are notified whether "You decided to take the Large Pile" or "Your opponent decided to take the Large Pile,"
+    depending on whether you or your opponent ended the experiment.
+<!--    On the bottom part of the screen, you are told that the game is over, and that the next game will begin shortly.-->
+<!--    On the top part of the screen, BLUE's move is recorded with a TAKE in the second column.-->
+<!--    The payoffs from the first game for both yourself and your opponent are recorded on the right hand side of the screen in the columns labeled-->
+<!--    "Payoff."-->
+<!--    Your own payoff is in your color.-->
+<!--    That of your opponent is in the opponent's color.-->
+<!--    Please record your own payoff on the record sheet that is provided.-->
+    Then, both yours and your opponent's payoff are reported on your screen.
+</p>
+
+<p>
+    The RED player will see the following screen.
+    Since in previous turn the BLUE player decided to TAKE, the notification states: "Your opponent decided to take the large pile".
+</p>
+
+<br>
+
+<!-- RED player's result screen -->
+<div class="player-screen">
+<h5>RED player's screen</h5>
+
+    <h4>Results</h4>
+
+<div class="card my-3 card-screen"><div class="card-header">Your opponent decided to take the large pile</div></div>
+<!--        <p>Your opponent decided to take the large pile.</p>-->
+<div class="card my-5 card-screen">
+    <div class="card-body">
+        <p>Your payoff is: {{ small_pile_practice_second }}</p>
+        <p>Your opponent's payoff is: {{ large_pile_practice_second }}</p>
+    </div>
+</div>
+</div>
+
+<br>
+
+<p>
+    The BLUE player will see instead the following screen.
+    Since in previous turn the BLUE player decided to TAKE, the notification states: "You decided to take the large pile".
+</p>
+
+<!-- BLUE player's result screen -->
+<div class="player-screen">
+
+<h5>BLUE player's screen</h5>
+
+    <h4>Results</h4>
+
+<div class="card my-3 card-screen"><div class="card-header">You decided to take the large pile</div></div>
+<!--        <p>You decided to take the large pile.</p>-->
+<div class="card my-5 card-screen">
+    <div class="card-body">
+            <p>Your payoff is: {{ large_pile_practice_second }}</p>
+            <p>Your opponent's payoff is: {{ small_pile_practice_second }}</p>
+        </div>
+</div>
+</div>
+
+<br>
+
+<p>
+    We will now proceed to the second practice game.
+    Here, you will see how the payoffs change if both players have selected PASS at each turn.
+</p>
+
+    <!-- Start second practice game button -->
+    <input class="btn btn-primary btn-large btn-primary next-button otree-btn-next" type="submit" value="Start new practice game"/>
+
+{% endblock %}

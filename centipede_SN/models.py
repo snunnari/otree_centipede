@@ -43,6 +43,47 @@ class Constants(BaseConstants):
         large_piles.append(large_pile * base ** node)
         small_piles.append(small_pile * base ** node)
 
+
+        # Vars for Instructions/Practice
+        large_piles_practice = large_piles.copy()
+        small_piles_practice = small_piles.copy()
+
+        columns_range = range(4 + num_nodes)
+        rounds_range = range(1, num_nodes + 1)
+
+        # Merge the two Piles alternating elements
+        payoff_red_practice = large_piles_practice.copy()
+        for i in range(len(large_piles_practice)):
+            if i % 2 != 0:
+                payoff_red_practice[i] = small_piles_practice[i]
+
+        # Merge the two Piles alternating elements
+        payoff_blue_practice = small_piles_practice.copy()
+        for i in range(len(payoff_blue_practice)):
+            if i % 2 != 0:
+                payoff_blue_practice[i] = large_piles_practice[i]
+
+        # Matrix of moves and payoffs
+        # --------------------------------------------------------------------------------
+        # Table of moves for each game node
+        movesList = ['P' for n in range(num_nodes)]
+        movesMatrix = [movesList.copy()]
+
+        for i in range(num_nodes):
+            mc = movesList.copy()
+            for j in range(num_nodes):
+                if j <= i:
+                    mc[i - j] = ''
+                    mc[i] = 'T'
+            mc.reverse()
+            movesMatrix.append(mc)
+
+        movesMatrix.reverse()
+
+        # Zip variables needed for Instructions
+        instructionsMatrix = list(zip(movesMatrix, large_piles_practice, small_piles_practice,
+                                      payoff_red_practice, payoff_blue_practice))
+
 class Subsession(BaseSubsession):
 
     game = models.IntegerField(initial=1)
