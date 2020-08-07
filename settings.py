@@ -17,13 +17,6 @@ SESSION_CONFIGS = [
         app_sequence=['centipede'],
         use_browser_bots=False
     ),
-    dict(
-        name='centipede_SN',
-        display_name="Centipede Game (SN Version)",
-        num_demo_participants=4,
-        app_sequence=['centipede_SN'],
-        use_browser_bots=False
-    ),
 ]
 
 
