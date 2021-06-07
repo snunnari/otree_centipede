@@ -40,3 +40,5 @@ SECRET_KEY = 'ze+i3u9b5cjw&q$puki3i6k)=5_^lzs0-0o=auta3w_(ei1#%4'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
