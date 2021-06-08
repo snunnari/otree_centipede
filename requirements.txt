@@ -1,2 +1,4 @@
--r requirements_base.txt
-psycopg2>=2.5.1
+otree==3.3.11
+psycopg2>=2.8.4
+sentry-sdk==0.7.9
+numpy>=1.18.1
