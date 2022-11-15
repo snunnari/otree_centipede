@@ -11,4 +11,3 @@ This repository contains one oTree app implementing the centipede game as in the
 
 This app was developed with oTree version 2.5.7.
 
-**Demo:** https://centipede-game.herokuapp.com/demo/
